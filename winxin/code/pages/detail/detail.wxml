@@ -41,6 +41,9 @@
             </view>
             <view class="entry-summary">
                 <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+                <block wx:if="{{detail.category_name =='好货'}}">
+                    <text class="go-buy" catchtap="onGoodsRedirect">立即购买</text>
+                </block>
           </view>
         </view>
         <!--  上一篇，下一篇  -->

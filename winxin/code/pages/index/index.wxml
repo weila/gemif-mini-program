@@ -48,7 +48,7 @@
       </view>
     </form>
     <!-- 图标导航 -->
-<!--     <view class="top-Nav">
+    <view class="top-Nav">
       <block wx:for="{{topNav}}" wx:key="id">
         <view class="top-item" catchtap="onNavRedirect" id="{{item.id}}" data-redicttype="{{item.redirecttype}}" data-url="{{item.url}}" data-appid="{{item.appid}}" data-extraData="{{item.extraData}}">
           <view>
@@ -58,8 +58,8 @@
             <text>{{item.name}}</text>
           </view>
         </view>
-      </block> -->
-      <!-- <view class="top-item" style='width:10%; position: relative; float:left; text-align:center'>
+      </block>
+<!--       <view class="top-item" style='width:10%; position: relative; float:left; text-align:center'>
                     <view>
                         <image src="../../images/kefu.png"></image>
                     </view>
@@ -68,8 +68,8 @@
                     </view>
                     <button class="share-button" open-type="contact">
                     </button>
-                </view>
-    </view> -->
+                </view> -->
+    </view>
     <!-- 图标导航 -->
 
     <view class='top-Nav2'>

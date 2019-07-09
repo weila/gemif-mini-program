@@ -176,6 +176,41 @@ Page({
             }
         })
     },
+      //首页图标跳转
+  onGoodsRedirect:function(e){      
+      var redicttype = e.currentTarget.dataset.redicttype;
+      var url = e.currentTarget.dataset.url == null ? '' : e.currentTarget.dataset.url;
+      var appid = e.currentTarget.dataset.appid == null ? '' : e.currentTarget.dataset.appid;
+      var extraData = e.currentTarget.dataset.extraData == null ? '' : e.currentTarget.dataset.extraData;
+      if (redicttype == 'apppage') {//跳转到小程序内部页面         
+          wx.navigateTo({
+              url: url
+          })
+      }
+      else if (redicttype == 'webpage')//跳转到web-view内嵌的页面
+      {
+          url = '../webpage/webpage?url=' + url;
+          wx.navigateTo({
+              url: url
+          })
+      }
+      else if (redicttype == 'miniapp')//跳转到其他app
+      {
+          wx.navigateToMiniProgram({
+              appId: appid,
+              envVersion: 'release',
+              path: url,
+              extraData: extraData,
+              success(res) {
+                  // 打开成功
+              },
+              fail: function (res) {
+                  console.log(res);
+              }
+          })
+      }
+      
+  },
     clickLike: function (e) {
         var id = e.target.id;
         var self = this;
@@ -321,6 +356,9 @@ Page({
         getPostDetailRequest
             .then(response => {
                 res = response;
+                console.log("-----------------")
+                console.log(response)
+                console.log("-----------------")
                 WxParse.wxParse('article', 'html', response.data.content.rendered, self, 5);
                 if (response.data.total_comments != null && response.data.total_comments != '') {
                     self.setData({
